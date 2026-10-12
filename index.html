@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeuVanguard | Cognitive AI Commerce &amp; Next-Gen Retail</title>
+
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Ambient Background Gradients -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <span><i class="fa-solid fa-wand-magic-sparkles"></i> Powered by Gemini 1.5 Pro Neural Engine &bull; Free Global Quantum Shipping on Orders Over $200</span>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <div class="brand-logo"><i class="fa-solid fa-cube"></i></div>
+      <span class="brand-name">NeuVanguard<span>.AI</span></span>
+    </div>
+
+    <div class="nav-search-bar">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="searchInput" placeholder="Search smart inventory or ask AI concierge...">
+      <button class="visual-search-btn" id="openVisualSearch" title="AI Visual Scanner">
+        <i class="fa-solid fa-camera-retro"></i>
+      </button>
+    </div>
+
+    <div class="nav-actions">
+      <button class="nav-btn" id="openAiChatBtn" title="AI Shopping Concierge">
+        <i class="fa-solid fa-robot"></i>
+        <span class="badge-dot"></span>
+      </button>
+      <button class="nav-btn" id="openCartBtn" title="Shopping Cart">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-badge" id="cartCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="hero-content">
+      <div class="ai-tag"><i class="fa-solid fa-microchip"></i> Cognitive Retail Architecture</div>
+      <h1>Next-Gen Commerce, <br><span class="text-gradient">Curated by Intelligence</span></h1>
+      <p>Experience zero-latency autonomous shopping powered by real-time neural models, visual similarity engines, and adaptive mood curation.</p>
+      
+      <!-- Mood Curation Selector -->
+      <div class="mood-selector">
+        <span class="mood-label">AI Vibe Filter:</span>
+        <div class="mood-pills" id="moodPills">
+          <button class="mood-pill active" data-mood="all">All Items</button>
+          <button class="mood-pill" data-mood="Cyberpunk">Cyberpunk / Edgy</button>
+          <button class="mood-pill" data-mood="Minimalist">Minimalist Zen</button>
+          <button class="mood-pill" data-mood="Executive">Executive Luxury</button>
+          <button class="mood-pill" data-mood="Performance">High Performance</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Catalog Grid -->
+  <main class="main-container">
+    <div class="section-header">
+      <h2>Curated Neural Inventory</h2>
+      <span class="item-count" id="itemCount">Showing 12 items</span>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+      <!-- Dynamically Injected Products -->
+    </div>
+  </main>
+
+  <!-- AI Chat Concierge Drawer -->
+  <div class="drawer-overlay" id="aiChatDrawer">
+    <div class="drawer ai-drawer">
+      <div class="drawer-header">
+        <div class="drawer-title">
+          <i class="fa-solid fa-robot"></i>
+          <div>
+            <h3>Gemini AI Concierge</h3>
+            <p>Active &bull; Neural Reasoning v4.2</p>
+          </div>
+        </div>
+        <button class="close-drawer" id="closeAiChat"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-bubble ai">
+          Hello, traveler. I am your cognitive retail assistant. Tell me what you're looking for, your aesthetic, or your technical specifications, and I will instantly curate the ideal setup for you.
+        </div>
+      </div>
+      <form class="chat-input-form" id="chatForm">
+        <input type="text" id="chatInput" placeholder="Ask AI for recommendations..." autocomplete="off">
+        <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Shopping Cart Drawer -->
+  <div class="drawer-overlay" id="cartDrawer">
+    <div class="drawer cart-drawer">
+      <div class="drawer-header">
+        <h3><i class="fa-solid fa-bag-shopping"></i> Your Cart (<span id="cartDrawerCount">0</span>)</h3>
+        <button class="close-drawer" id="closeCart"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="cart-items-list" id="cartItemsList">
+        <!-- Cart Items -->
+      </div>
+      <div class="cart-footer">
+        <div class="cart-subtotal-row">
+          <span>Subtotal</span>
+          <strong id="cartSubtotal">$0.00</strong>
+        </div>
+        <div class="ai-discount-banner" id="aiDiscountBanner">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> AI Bundle unlocked: Free biometric insurance included!
+        </div>
+        <button class="btn btn-primary btn-block" id="checkoutBtn">Proceed to Quantum Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visual Search Modal -->
+  <div class="modal-overlay" id="visualSearchModal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeVisualModal"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-header">
+        <div class="ai-tag"><i class="fa-solid fa-camera-retro"></i> Neural Vision Engine</div>
+        <h3>AI Visual Similarity Search</h3>
+        <p>Drop an image reference or select a sample scan below to match silhouettes</p>
+      </div>
+      <div class="visual-dropzone" id="visualDropzone">
+        <i class="fa-solid fa-cloud-arrow-up"></i>
+        <p>Drag & drop reference image here or <span>browse files</span></p>
+      </div>
+      <div class="sample-scans">
+        <span>Quick Test Scans:</span>
+        <div class="scan-chips">
+          <button class="scan-chip" data-query="jacket">Outerwear &amp; Jackets</button>
+          <button class="scan-chip" data-query="optic">Smart Eyewear</button>
+          <button class="scan-chip" data-query="titanium">Titanium Tech</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Secure Checkout Modal -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeCheckoutModal"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-header">
+        <div class="ai-tag"><i class="fa-solid fa-shield-halved"></i> Encrypted Gateway</div>
+        <h3>Quantum Checkout</h3>
+        <p>Finalize your AI-curated acquisition</p>
+      </div>
+      <div class="modal-summary">
+        <div class="summary-row">
+          <span>Total Items:</span>
+          <strong id="checkoutItemCount">0 items</strong>
+        </div>
+        <div class="summary-row">
+          <span>Total Investment:</span>
+          <strong id="checkoutTotalAmount" class="text-gradient">$0.00</strong>
+        </div>
+      </div>
+      <form id="paymentForm" class="checkout-form">
+        <input type="email" placeholder="customer@neuvanguard.ai" required>
+        <input type="text" placeholder="Shipping Address (Sector / City)" required>
+        <button type="submit" class="btn btn-primary btn-block">Authorize Secure Transfer <i class="fa-solid fa-lock"></i></button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">Action processed successfully</div>
+
+  <!-- Main JavaScript File -->
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
